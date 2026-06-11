@@ -2,68 +2,48 @@
 <html>
 
 <head>
+  <!--
+    If you are serving your web app in a path other than the root, change the
+    href value below to reflect the base path you are serving from.
 
-  <!-- for microsoft browsers to render website as edge website -->
+    The path provided below has to start and end with a slash "/" in order for
+    it to work correctly.
+
+    For more details:
+    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
+
+    This is a placeholder for base href that will be replaced by the value of
+    the `--base-href` argument provided to `flutter build`.
+  -->
+  <base href="$FLUTTER_BASE_HREF">
+
+  <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="description" content="A new Flutter project.">
 
-  <!-- website base adress -->
-  <base href=".">
-
-  <!-- charset is UTF-8 according to HTML5 specification -->
-  <meta charset="UTF-8"><!-- website title -->
-  <title>Wordle</title>
-
-  <!-- description for the website -->
-  <meta name="description" content="Privaat gehostetes deutsches Wordle">
-
-  <!-- favicon -->
-  <link rel="icon" type="image/png" href="https://laurinstrauss.de/wordle/assets/icons/appicon/icon.ico">
-
-  <!-- apple specific html tags -->
+  <!-- iOS meta tags & icons -->
   <meta name="mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-title" content="Wordle">
-  <meta name="apple-mobile-web-app-status-bar-style" content="white">
-  <link rel="apple-touch-icon" sizes="180x180"
-    href="https://laurinstrauss.de/wordle/assets/icons/appicon/icon_180x180.png">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="wordle">
+  <link rel="apple-touch-icon" href="icons/icon_192x192.png">
 
-  <!-- homescreen webapp tags -->
-  <meta name="viewport"
-    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png" />
 
-  <!-- web manifest -->
-  <link rel="manifest" href="https://laurinstrauss.de/wordle/manifest.json">
-
-  <!-- javascript render web urls -->
-  <script type="text/javascript">
-    window.flutterWebRenderer = "html";
-  </script>
-
-  <!-- javascript to bust caching for reloading -->
-  <script src="main.dart.js?v=20260405"></script>
-  <script src="main.dart.js?v=20260405"></script>
+  <title>wordle</title>
+  <link rel="manifest" href="manifest.json">
 </head>
 
-<!-- ensure white titlebar -->
-<style>
-  html,
-  body {
-    margin: 0;
-    padding: 0;
-    background: #ffffff;
-    height: 100%;
-    width: 100%;
-  }
-</style>
-
 <body>
-  <!-- bootstrap flutter application for web use as JavaScript -->
-  <script src="flutter_bootstrap.js" async></script>
+  <!--
+    You can customize the "flutter_bootstrap.js" script.
+    This is useful to provide a custom configuration to the Flutter loader
+    or to give the user feedback during the initialization process.
 
-  <script>
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/isar_worker.js');
-    }
-  </script>
+    For more details:
+    * https://docs.flutter.dev/platform-integration/web/initialization
+  -->
+  <script src="flutter_bootstrap.js" async></script>
 </body>
 
 </html>

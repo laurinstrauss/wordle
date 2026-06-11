@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class SignupView extends StatefulWidget {
@@ -8,6 +9,10 @@ class SignupView extends StatefulWidget {
 }
 
 class SignupViewState extends State<SignupView> {
+  final tec_username = TextEditingController();
+  final tec_password = TextEditingController();
+  final tec_mail = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,10 +23,17 @@ class SignupViewState extends State<SignupView> {
           children: [
             TextFormField(
               decoration: InputDecoration(label: Text('Benutzername')),
+              controller: tec_username,
             ),
-            TextFormField(decoration: InputDecoration(label: Text('E-Mail'))),
-            TextFormField(decoration: InputDecoration(label: Text('Passwort'))),
-            OutlinedButton(onPressed: () => (), child: Text('Sign up')),
+            TextFormField(
+              decoration: InputDecoration(label: Text('E-Mail')),
+              controller: tec_mail,
+            ),
+            TextFormField(
+              decoration: InputDecoration(label: Text('Passwort')),
+              controller: tec_password,
+            ),
+            OutlinedButton(onPressed: () => signup(), child: Text('Sign up')),
             OutlinedButton(
               onPressed: () =>
                   Navigator.pushReplacementNamed(context, '/login'),
@@ -31,5 +43,17 @@ class SignupViewState extends State<SignupView> {
         ),
       ),
     );
+  }
+
+  Future<User?> signup() async {
+    final FirebaseAuth auth = FirebaseAuth.instance;
+    final result = await auth.createUserWithEmailAndPassword(
+      email: tec_mail.text,
+      password: tec_password.text,
+    );
+    if (result.user != null) {
+      Navigator.pushNamedAndRemoveUntil(context, '/home', (route) => false);
+    }
+    return result.user;
   }
 }

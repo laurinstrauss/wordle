@@ -1,4 +1,6 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:wordle/firebase_options.dart';
 import 'package:wordle/themes/ButtonThemes.dart';
 import 'package:wordle/themes/InputThemes.dart';
 import 'package:wordle/views/home/HomeView.dart';
@@ -8,7 +10,9 @@ import 'package:wordle/views/login/LoginView.dart';
 import 'package:wordle/views/login/SignUpView.dart';
 import 'package:wordle/views/login/WelcomeScreen.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(const MyApp());
 }
 
